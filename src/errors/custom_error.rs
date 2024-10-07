@@ -1,18 +1,6 @@
 use anyhow::{Context, Result};
 use thiserror::Error;
 
-#[derive(Error, Debug)]
-pub enum CustomError {
-    #[error("Database error: {0}")]
-    DatabaseError(#[from] rusqlite::Error),
-    
-    #[error("IO error: {0}")]
-    IoError(#[from] std::io::Error),
-    
-    // Add more specific error types as needed
-    #[error("Validation error: {0}")]
-    ValidationError(String),
-}
 
 // You can now use anyhow::Result in your function signatures
 pub type CustomResult<T> = Result<T, anyhow::Error>;
